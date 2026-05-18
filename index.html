@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Proposta Comercial — BC Higienizações</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --accent: #059669;
+    --accent-escuro: #047857;
+    --accent-claro: #ECFDF5;
+    --escuro: #0A0A0F;
+    --cinza: #6B7280;
+    --cinza-claro: #F4F6FB;
+    --verde: #059669;
+    --branco: #FFFFFF;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { overflow-x: hidden; max-width: 100%; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--branco);
+    color: var(--escuro);
+    font-size: 15px;
+    line-height: 1.7;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    margin: 0;
+  }
+
+  @media print {
+    .page-break { page-break-before: always; }
+    body { font-size: 13px; }
+    .capa { min-height: auto; padding: 60px 64px; }
+  }
+
+  @media (min-width: 1200px) { .capa { padding: 80px 10%; } .secao { padding: 72px 10%; } }
+  @media (min-width: 900px) and (max-width: 1199px) { .capa { padding: 80px 64px; } .secao { padding: 72px 64px; } }
+
+  @media (max-width: 640px) {
+    .capa { padding: 28px 20px; min-height: 100svh; overflow-x: hidden; }
+    .capa-topo { flex-wrap: wrap; gap: 10px; }
+    .capa-titulo { font-size: 38px !important; }
+    .capa-desc { font-size: 14px; }
+    .capa-rodape { flex-direction: column; align-items: flex-start; gap: 14px; }
+    .logo-agencia { font-size: 17px; }
+    .capa-tag { font-size: 10px; padding: 5px 10px; }
+    .bonus-badge { font-size: 11px; padding: 7px 12px; }
+    .secao { padding: 32px 20px; overflow-x: hidden; }
+    h3 { font-size: 22px; line-height: 1.2; overflow-wrap: break-word; hyphens: auto; }
+    .lead { font-size: 15px; }
+    .diag-grid { grid-template-columns: 1fr !important; gap: 12px; }
+    .planos-grid { grid-template-columns: 1fr !important; gap: 16px; }
+    .passos-opcoes { grid-template-columns: 1fr !important; gap: 12px; }
+    .bonus-card { grid-template-columns: 1fr !important; gap: 20px; text-align: center; padding: 20px 16px; }
+    .contato-box { flex-direction: column !important; align-items: flex-start; gap: 16px; padding: 18px 16px; }
+    .contato-info { text-align: left; }
+    .fase { grid-template-columns: 80px 1fr; }
+    .fase-num { padding: 14px 8px; }
+    .fase-conteudo { padding: 14px 0 14px 16px; }
+    .calc-grid { grid-template-columns: 1fr !important; }
+    .plano-header { padding: 20px 16px; }
+    .plano-body { padding: 16px; }
+    .plano-footer { padding: 12px 16px; }
+  }
+
+  .capa {
+    background: #071A12;
+    min-height: 100vh;
+    padding: 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .capa::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(5,150,105,0.28) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .capa::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: -100px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(5,150,105,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .capa-topo { display: flex; justify-content: space-between; align-items: flex-start; }
+
+  .logo-agencia {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+
+  .capa-tag {
+    font-size: 12px;
+    font-weight: 500;
+    color: rgba(255,255,255,0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    border: 1px solid rgba(255,255,255,0.15);
+    padding: 6px 14px;
+    border-radius: 100px;
+  }
+
+  .capa-meio {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0 60px;
+  }
+
+  .capa-subtitulo {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 24px;
+  }
+
+  .capa-titulo {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 1.0;
+    color: var(--branco);
+    margin-bottom: 16px;
+  }
+
+  .capa-titulo span { color: var(--accent); }
+
+  .capa-desc {
+    font-size: 18px;
+    color: rgba(255,255,255,0.5);
+    font-weight: 300;
+    max-width: 480px;
+    margin-top: 24px;
+    line-height: 1.6;
+  }
+
+  .capa-rodape {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 32px;
+  }
+
+  .capa-rodape-info { font-size: 13px; color: rgba(255,255,255,0.3); font-weight: 300; }
+  .capa-rodape-info strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+  .bonus-badge {
+    background: linear-gradient(135deg, var(--accent), var(--accent-escuro));
+    color: white;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 100px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .secao { padding: 72px 64px; border-bottom: 1px solid #EAECF0; }
+  .secao:last-child { border-bottom: none; }
+  .secao-alt { background: var(--cinza-claro); }
+
+  .secao-num {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    margin-bottom: 12px;
+  }
+
+  h3 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 36px;
+    line-height: 1.1;
+    color: var(--escuro);
+    margin-bottom: 24px;
+  }
+
+  .lead { font-size: 17px; color: var(--cinza); max-width: 640px; line-height: 1.75; margin-bottom: 40px; }
+
+  .diag-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 40px; }
+
+  .diag-card { background: var(--branco); border: 1px solid #E5E7EB; border-radius: 16px; padding: 28px; }
+
+  .diag-card-icone {
+    width: 44px; height: 44px;
+    background: var(--accent);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  .diag-card h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; margin-bottom: 8px; }
+  .diag-card p { font-size: 14px; color: var(--cinza); line-height: 1.65; }
+
+  .destaque-box {
+    background: linear-gradient(135deg, #ECFDF5, #D1FAE5);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 24px 28px;
+    margin-top: 32px;
+  }
+
+  .destaque-box p { font-size: 15px; color: #065F46; line-height: 1.7; }
+
+  .calc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 32px; }
+
+  .calc-card { background: var(--branco); border: 1px solid #E5E7EB; border-radius: 16px; padding: 24px 28px; }
+  .calc-card.destaque { background: var(--accent-claro); border-color: var(--accent); }
+
+  .calc-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
+  .calc-valor { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 32px; color: var(--escuro); line-height: 1; margin-bottom: 6px; }
+  .calc-desc { font-size: 13px; color: var(--cinza); line-height: 1.5; }
+
+  .planos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; margin-top: 40px; }
+
+  .plano-card { border-radius: 20px; overflow: hidden; border: 2px solid #E5E7EB; }
+  .plano-card.destaque { border-color: var(--accent); box-shadow: 0 8px 40px rgba(5,150,105,0.15); }
+
+  .plano-header { padding: 28px 32px; background: var(--cinza-claro); }
+  .plano-card.destaque .plano-header { background: var(--accent); }
+
+  .plano-tag {
+    display: inline-block;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em;
+    padding: 4px 10px; border-radius: 100px; margin-bottom: 12px;
+    background: rgba(5,150,105,0.12); color: var(--accent);
+  }
+  .plano-card.destaque .plano-tag { background: rgba(255,255,255,0.2); color: rgba(255,255,255,0.9); }
+
+  .plano-nome { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 26px; color: var(--escuro); line-height: 1.1; }
+  .plano-card.destaque .plano-nome { color: var(--branco); }
+
+  .plano-preco-label { font-size: 12px; color: var(--cinza); margin-top: 16px; text-transform: uppercase; letter-spacing: 0.08em; }
+  .plano-card.destaque .plano-preco-label { color: rgba(255,255,255,0.6); }
+
+  .plano-preco { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 44px; color: var(--escuro); line-height: 1; margin-top: 4px; }
+  .plano-card.destaque .plano-preco { color: var(--branco); }
+  .plano-preco sup { font-size: 20px; font-weight: 700; vertical-align: super; }
+
+  .plano-preco-obs { font-size: 12px; margin-top: 6px; color: var(--cinza); }
+  .plano-card.destaque .plano-preco-obs { color: rgba(255,255,255,0.55); }
+
+  .plano-body { padding: 28px 32px; background: var(--branco); }
+
+  .plano-item { display: flex; align-items: flex-start; gap: 10px; padding: 10px 0; border-bottom: 1px solid #F3F4F6; font-size: 14px; color: var(--escuro); line-height: 1.5; }
+  .plano-item:last-child { border-bottom: none; }
+
+  .plano-item-check {
+    width: 18px; height: 18px; background: #DCFCE7; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 10px; color: var(--verde); flex-shrink: 0; margin-top: 2px; font-weight: 700;
+  }
+
+  .plano-footer { padding: 20px 32px; background: #F9FAFB; border-top: 1px solid #E5E7EB; }
+  .plano-card.destaque .plano-footer { background: #ECFDF5; }
+
+  .setup-gratis { display: flex; align-items: center; gap: 10px; font-size: 13px; color: var(--verde); font-weight: 600; }
+  .setup-gratis span { background: #DCFCE7; border-radius: 100px; padding: 3px 10px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .cronograma { margin-top: 40px; }
+  .fase { display: grid; grid-template-columns: 160px 1fr; }
+  .fase-num { padding: 28px 24px; border-right: 2px solid var(--accent); position: relative; }
+  .fase-num::after { content: ''; position: absolute; right: -7px; top: 36px; width: 12px; height: 12px; background: var(--accent); border-radius: 50%; }
+  .fase-label { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 13px; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }
+  .fase-prazo { font-size: 12px; color: var(--cinza); margin-top: 4px; }
+  .fase-conteudo { padding: 28px 0 28px 36px; border-bottom: 1px solid #EAECF0; }
+  .fase:last-child .fase-conteudo { border-bottom: none; }
+  .fase-conteudo h4 { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 17px; margin-bottom: 8px; }
+  .fase-conteudo p { font-size: 14px; color: var(--cinza); line-height: 1.65; }
+
+  .bonus-secao { background: #071A12; color: var(--branco); }
+  .bonus-secao h3 { color: var(--branco); }
+  .bonus-secao .secao-num { color: #34D399; }
+
+  .bonus-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px; padding: 40px; margin-top: 40px;
+    display: grid; grid-template-columns: 1fr auto; gap: 40px; align-items: center;
+  }
+
+  .bonus-valor-antigo { font-size: 14px; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-bottom: 4px; }
+  .bonus-valor { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 64px; color: #34D399; line-height: 1; }
+  .bonus-valor-label { font-size: 14px; color: rgba(255,255,255,0.5); margin-top: 8px; }
+
+  .bonus-lista { list-style: none; }
+  .bonus-lista li { font-size: 15px; color: rgba(255,255,255,0.7); padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.07); display: flex; gap: 10px; align-items: flex-start; }
+  .bonus-lista li:last-child { border-bottom: none; }
+  .bonus-lista li::before { content: '✓'; color: #34D399; font-weight: 700; flex-shrink: 0; }
+
+  .validade { margin-top: 32px; padding: 16px 24px; background: rgba(5,150,105,0.15); border: 1px solid rgba(5,150,105,0.3); border-radius: 12px; font-size: 14px; color: #6EE7B7; font-weight: 500; text-align: center; }
+
+  .passos-opcoes { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 40px; }
+  .passo-opcao { border: 2px solid #E5E7EB; border-radius: 16px; padding: 28px; }
+  .passo-opcao.principal { border-color: var(--accent); background: #ECFDF5; }
+  .passo-opcao-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 8px; }
+  .passo-opcao h4 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 20px; margin-bottom: 4px; }
+  .passo-opcao-preco { font-size: 28px; font-family: 'Syne', sans-serif; font-weight: 800; color: var(--accent); margin-top: 12px; }
+  .passo-opcao-obs { font-size: 12px; color: var(--cinza); margin-top: 4px; }
+
+  .contato-box { margin-top: 48px; padding: 36px; background: #071A12; border-radius: 20px; display: flex; justify-content: space-between; align-items: center; gap: 32px; }
+  .contato-box h4 { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 22px; color: var(--branco); margin-bottom: 8px; }
+  .contato-box p { font-size: 14px; color: rgba(255,255,255,0.5); }
+  .contato-info { text-align: right; }
+  .contato-nome { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--branco); }
+  .contato-detalhe { font-size: 13px; color: rgba(255,255,255,0.45); margin-top: 4px; }
+  .contato-detalhe a { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="capa">
+  <div class="capa-topo">
+    <div class="logo-agencia">PROPEL X</div>
+    <div class="capa-tag">Proposta Comercial · Maio 2026</div>
+  </div>
+  <div class="capa-meio">
+    <div class="capa-subtitulo">Plano de Crescimento Digital</div>
+    <div class="capa-titulo">BC<br><span>Higienizações</span></div>
+    <p class="capa-desc">Uma estratégia de tráfego pago para gerar clientes recorrentes de higienização de estofados em Fortaleza.</p>
+  </div>
+  <div class="capa-rodape">
+    <div>
+      <div class="capa-rodape-info">Preparado por <strong>Jose Barbosa</strong></div>
+      <div class="capa-rodape-info" style="margin-top:4px;">Agência Propel X · Fortaleza, CE</div>
+    </div>
+    <div class="bonus-badge">🎁 Setup grátis para fechamento hoje</div>
+  </div>
+</div>
+
+<div class="secao page-break">
+  <div class="secao-num">01 · Diagnóstico</div>
+  <h3>O cenário da<br>BC Higienizações</h3>
+  <p class="lead">Você já tem o serviço e a experiência. O que falta é previsibilidade. Indicação não tem botão de ligar quando você precisa de mais clientes. Vamos mudar isso.</p>
+  <div class="diag-grid">
+    <div class="diag-card">
+      <div class="diag-card-icone">🔍</div>
+      <h4>A demanda existe, mas não chega até você</h4>
+      <p>Quem pesquisa "higienização de estofado em Fortaleza" já está pronto para contratar. Com tráfego pago, você aparece exatamente nesse momento, antes do concorrente.</p>
+    </div>
+    <div class="diag-card">
+      <div class="diag-card-icone">📍</div>
+      <h4>Negócio local com raio definido</h4>
+      <p>Higienização é 100% local. Com Meta Ads você segmenta exatamente a região que atende, sem desperdiçar verba com quem está fora do seu alcance.</p>
+    </div>
+    <div class="diag-card">
+      <div class="diag-card-icone">💬</div>
+      <h4>WhatsApp é o canal ideal de fechamento</h4>
+      <p>Uma campanha direta para o WhatsApp leva o cliente do anúncio para uma conversa em segundos. O processo de venda já acontece naturalmente por ali.</p>
+    </div>
+    <div class="diag-card">
+      <div class="diag-card-icone">🏆</div>
+      <h4>Volume é o jogo</h4>
+      <p>Com serviços entre R$ 150 e R$ 250, a math é simples: fechar poucos clientes por semana já paga todo o investimento. A meta é construir esse fluxo de forma previsível.</p>
+    </div>
+  </div>
+  <div class="destaque-box">
+    <p>Um site bonito não faz isso sozinho. Um site sem tráfego é um catálogo que ninguém vê. O tráfego é o que traz as pessoas até você.</p>
+  </div>
+</div>
+
+<div class="secao secao-alt page-break">
+  <div class="secao-num">02 · Simulação de Retorno</div>
+  <h3>Quantos clientes pagam<br>o investimento</h3>
+  <p class="lead">Com ticket médio de R$ 200, veja quanto você precisa fechar para cobrir o investimento e começar a lucrar.</p>
+  <div class="calc-grid">
+    <div class="calc-card">
+      <div class="calc-label">Investimento total mensal</div>
+      <div class="calc-valor">R$ 1.200</div>
+      <div class="calc-desc">R$ 700 gestão + R$ 500 em anúncios (~R$ 17/dia)</div>
+    </div>
+    <div class="calc-card">
+      <div class="calc-label">Ticket médio do serviço</div>
+      <div class="calc-valor">R$ 200</div>
+      <div class="calc-desc">Média estimada entre R$ 150 e R$ 250</div>
+    </div>
+    <div class="calc-card destaque">
+      <div class="calc-label">Clientes para pagar tudo</div>
+      <div class="calc-valor">6 clientes</div>
+      <div class="calc-desc">6 higienizações no mês cobrem 100% do investimento</div>
+    </div>
+    <div class="calc-card destaque">
+      <div class="calc-label">Lucro com 20 clientes/mês</div>
+      <div class="calc-valor">R$ 2.800</div>
+      <div class="calc-desc">20 × R$ 200 = R$ 4.000 menos R$ 1.200 de custo</div>
+    </div>
+  </div>
+</div>
+
+<div class="secao page-break">
+  <div class="secao-num">03 · Planos</div>
+  <h3>Comece pelo que<br>faz sentido agora</h3>
+  <p class="lead">Dois planos complementares. Você pode começar com um e escalar depois, ou entrar com os dois e acelerar.</p>
+  <div class="planos-grid">
+    <div class="plano-card destaque">
+      <div class="plano-header">
+        <div class="plano-tag">⭐ Recomendado para começar</div>
+        <div class="plano-nome">Plano<br>Descoberta</div>
+        <div class="plano-preco-label">Taxa de gestão mensal</div>
+        <div class="plano-preco"><sup>R$</sup>700</div>
+        <div class="plano-preco-obs">+ anúncios (sugerido: R$ 500/mês · ~R$ 17/dia)</div>
+      </div>
+      <div class="plano-body">
+        <div class="plano-item"><div class="plano-item-check">✓</div>1 campanha Meta Ads com destino WhatsApp</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>1 conjunto de anúncios ativo e otimizado</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Roteiros de vídeos e briefings de arte para anúncios</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Análise e otimizações semanais</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Relatório semanal e mensal de performance</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Grupo de suporte no WhatsApp</div>
+      </div>
+      <div class="plano-footer">
+        <div class="setup-gratis">🎁 <span>Grátis hoje</span> Setup inicial (R$ 500 de economia)</div>
+      </div>
+    </div>
+    <div class="plano-card">
+      <div class="plano-header">
+        <div class="plano-tag" style="background:#F3F4F6;color:#374151;">Autoridade local</div>
+        <div class="plano-nome">Google Meu<br>Negócio</div>
+        <div class="plano-preco-label" style="color:#6B7280;">Taxa de gestão mensal</div>
+        <div class="plano-preco" style="color:#111827;"><sup style="color:#111827;">R$</sup>500</div>
+        <div class="plano-preco-obs" style="color:#6B7280;">Sem custo adicional de mídia</div>
+      </div>
+      <div class="plano-body">
+        <div class="plano-item"><div class="plano-item-check">✓</div>Configuração e otimização completa do perfil</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Posts semanais no perfil Google</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Gestão e resposta a avaliações</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Relatório de visibilidade local mensal</div>
+        <div class="plano-item"><div class="plano-item-check">✓</div>Grupo de suporte no WhatsApp</div>
+      </div>
+      <div class="plano-footer">
+        <div class="setup-gratis">🎁 <span>Grátis hoje</span> Setup inicial (R$ 500 de economia)</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:28px;padding:28px 32px;background:white;border-radius:16px;border:2px solid var(--accent);">
+    <div style="font-family:'Syne',sans-serif;font-weight:800;font-size:18px;color:var(--escuro);margin-bottom:8px;">Combo Completo · R$ 1.200/mês de gestão</div>
+    <div style="font-size:14px;color:var(--cinza);line-height:1.6;">Meta Ads + Google Meu Negócio juntos. Dois canais de aquisição funcionando em paralelo, o GMN construindo reputação e reduzindo custo por lead ao longo do tempo.</div>
+  </div>
+</div>
+
+<div class="secao secao-alt page-break">
+  <div class="secao-num">04 · Cronograma</div>
+  <h3>Como funciona<br>na prática</h3>
+  <p class="lead">Confirmado o plano, começamos em até 24 horas. Primeiros anúncios no ar na semana 1.</p>
+  <div class="cronograma">
+    <div class="fase">
+      <div class="fase-num"><div class="fase-label">Fase 1</div><div class="fase-prazo">Dias 1 a 3</div></div>
+      <div class="fase-conteudo">
+        <h4>Onboarding e Configuração</h4>
+        <p>Briefing estratégico, acesso ao Gerenciador de Anúncios, instalação do pixel, configuração da conta e alinhamento sobre criativos e região de atendimento.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="fase-num"><div class="fase-label">Fase 2</div><div class="fase-prazo">Dias 4 a 7</div></div>
+      <div class="fase-conteudo">
+        <h4>Criação e Lançamento</h4>
+        <p>Criação da campanha para WhatsApp, definição de público por localização, roteiro do primeiro criativo, revisão e publicação dos anúncios.</p>
+      </div>
+    </div>
+    <div class="fase">
+      <div class="fase-num"><div class="fase-label">Fase 3</div><div class="fase-prazo">Mês 2 em diante</div></div>
+      <div class="fase-conteudo">
+        <h4>Gestão e Otimização Contínua</h4>
+        <p>Acompanhamento semanal, testes de criativos, ajuste de públicos e verba, relatório mensal com resultados e próximos passos para escalar o que está funcionando.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="secao bonus-secao page-break">
+  <div class="secao-num">05 · Bônus</div>
+  <h3>Setup gratuito<br>para fechar hoje</h3>
+  <div class="bonus-card">
+    <div>
+      <ul class="bonus-lista">
+        <li>Configuração inicial da conta de anúncios</li>
+        <li>Instalação do pixel de rastreamento</li>
+        <li>Criação da estrutura da primeira campanha</li>
+        <li>Briefing e alinhamento estratégico completo</li>
+      </ul>
+    </div>
+    <div style="text-align:center;flex-shrink:0;">
+      <div class="bonus-valor-antigo">R$ 500</div>
+      <div class="bonus-valor">R$0</div>
+      <div class="bonus-valor-label">fechamento hoje</div>
+    </div>
+  </div>
+  <div class="validade">⏱ Validade desta proposta: 24 horas a partir do recebimento</div>
+</div>
+
+<div class="secao">
+  <div class="secao-num">06 · Próximos Passos</div>
+  <h3>Escolha um plano<br>e vamos começar</h3>
+  <p class="lead">Confirme o plano e enviamos o contrato em seguida. Onboarding em até 24 horas.</p>
+  <div class="passos-opcoes">
+    <div class="passo-opcao principal">
+      <div class="passo-opcao-label">⭐ Recomendado</div>
+      <h4>Plano Descoberta</h4>
+      <div style="font-size:13px;color:#555;margin-top:4px;">Meta Ads para WhatsApp + roteiros + relatórios</div>
+      <div class="passo-opcao-preco">R$ 700<span style="font-size:16px;font-weight:400;color:#6B7280;">/mês</span></div>
+      <div class="passo-opcao-obs">+ R$ 500/mês em anúncios · Total: R$ 1.200/mês</div>
+    </div>
+    <div class="passo-opcao">
+      <div class="passo-opcao-label">Combo completo</div>
+      <h4>Descoberta + GMN</h4>
+      <div style="font-size:13px;color:#555;margin-top:4px;">Meta Ads + Google Meu Negócio</div>
+      <div class="passo-opcao-preco" style="color:#374151;">R$ 1.200<span style="font-size:16px;font-weight:400;color:#6B7280;">/mês</span></div>
+      <div class="passo-opcao-obs">+ R$ 500/mês em anúncios · Total: R$ 1.700/mês</div>
+    </div>
+  </div>
+  <div class="contato-box">
+    <div>
+      <h4>Alguma dúvida? Fala comigo.</h4>
+      <p>Respondo rápido pelo WhatsApp ou Instagram.</p>
+    </div>
+    <div class="contato-info">
+      <div class="contato-nome">Jose Barbosa</div>
+      <div class="contato-detalhe">Propel X · Fortaleza, CE</div>
+      <div class="contato-detalhe" style="margin-top:4px;"><a href="https://instagram.com/josebarbosa.ads">@josebarbosa.ads</a></div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
